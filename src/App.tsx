@@ -1,8 +1,12 @@
-import "./App.css";
-import AppRouter from "./router/router";
+import { Container } from "@chakra-ui/react";
+import AppRouter from "./router/AppRouter";
 
 function App() {
-  return <AppRouter />;
+  return (
+    <Container maxWidth={"8xl"}>
+      <AppRouter />
+    </Container>
+  );
 }
 
 export default App;

@@ -2,12 +2,7 @@ import { Heading, Stack } from "@chakra-ui/react";
 
 const AboutPage = () => {
   return (
-    <Stack
-      height={"100vh"}
-      width={"100%"}
-      justifyContent={"center"}
-      alignItems={"center"}
-    >
+    <Stack height={"100vh"} width={"100%"}>
       <Heading>About Page</Heading>
     </Stack>
   );

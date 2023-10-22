@@ -8,11 +8,10 @@ const theme = extendTheme({
   },
   colors: {
     primary: {
-        main: "#4B73FF",
+      main: "#4B73FF",
+      darker: "#3c5bcc",
     },
-    secondary: {
-        main: "#F7F9FB",
-    }
+    secondary: "#F7F9FB"
   },
   styles: {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any

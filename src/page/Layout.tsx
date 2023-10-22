@@ -4,7 +4,7 @@ import Navbar from "../component/Navbar";
 
 const Layout = () => {
   return (
-    <Box minHeight={"100vh"} maxWidth={"1280px"} mx={{ base: 8, lg: 16 }}>
+    <Box minHeight={"100vh"} mx={{ base: 8, lg: 12 }}>
       <Navbar />
       <Outlet />
     </Box>

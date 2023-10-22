@@ -3,7 +3,7 @@ import { Heading, Stack } from "@chakra-ui/react";
 const RentPage = () => {
   return (
     <Stack
-      height={"100vh"}
+      height={"80vh"}
       width={"100%"}
       justifyContent={"center"}
       alignItems={"center"}

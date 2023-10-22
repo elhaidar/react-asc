@@ -13,6 +13,7 @@ import Sidebar from "../Sidebar";
 import { CgMenuRightAlt } from "react-icons/cg";
 import { TiWeatherPartlySunny } from "react-icons/ti";
 import { Link } from "react-router-dom";
+import { dataNavLink } from "../../util/data";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -36,7 +37,7 @@ const Navbar = () => {
   }
 
   return (
-    <Box width={"100%"} mx={"auto"} py={4}>
+    <Box as="nav" width={"100%"} mx={"auto"} py={4}>
       <List
         mx={{ base: 8, lg: 32 }}
         display={"flex"}
@@ -50,18 +51,11 @@ const Navbar = () => {
           </Box>
         </ListItem>
         <List display={{ base: "none", lg: "flex" }} gap={16}>
-          <Link to={"/"}>
-            <ListItem>Home</ListItem>
-          </Link>
-          <Link to={"/product"}>
-            <ListItem>Sell</ListItem>
-          </Link>
-          <Link to={"#"}>
-            <ListItem>Rent</ListItem>
-          </Link>
-          <Link to={"#"}>
-            <ListItem>About</ListItem>
-          </Link>
+          {dataNavLink.map((item) => (
+            <Link to={item.path}>
+              <ListItem>{item.title}</ListItem>
+            </Link>
+          ))}
         </List>
         <ListItem display={"flex"} alignItems={"center"} gap={4}>
           <IconButton

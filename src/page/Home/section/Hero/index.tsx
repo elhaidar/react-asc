@@ -1,24 +1,18 @@
-import {
-  Button,
-  Card,
-  HStack,
-  Heading,
-  Image,
-  Stack,
-  Text,
-} from "@chakra-ui/react";
-import HeroImage from "../../../assets/Hero.jpg";
-import HeroMobileImage from "../../../assets/HeroMobile.jpg";
-import InputField from "./fragment/InputField";
+import { Button, HStack, Heading, Image, Stack, Text } from "@chakra-ui/react";
+import HeroImage from "../../../../assets/Hero.jpg";
+import HeroMobileImage from "../../../../assets/HeroMobile.jpg";
+import Form from "./fragment/Form";
 
 const Hero = () => {
   return (
     <Stack width={"100%"} position={"relative"}>
       <Stack
         height={"80vh"}
+        maxHeight={"700px"}
         mt={4}
         position={"relative"}
-        p={16}
+        px={{ base: 4, md: 16 }}
+        py={{ base: 8, md: 16 }}
         borderRadius={"30px"}
       >
         <Stack
@@ -67,61 +61,14 @@ const Hero = () => {
             border={"1px solid black"}
             rounded={"2xl"}
             p={6}
+            boxShadow={"md"}
           >
             Get Started
           </Button>
         </Stack>
       </Stack>
-      <HStack justifyContent={"center"} width={"100%"} height={"20vh"}>
-        <Card
-          position={{ base: "relative", lg: "absolute" }}
-          top={{ lg: "73%" }}
-          direction={"row"}
-          justifyContent={"space-between"}
-          alignItems={"center"}
-          bg={"white"}
-          shadow={"md"}
-          width={{ base: "100%", lg: "90%" }}
-          mx={"auto"}
-          rounded={"3xl"}
-          p={8}
-          flexWrap={{ base: "wrap", lg: "nowrap" }}
-        >
-          <InputField
-            text="Location"
-            placeholder="Jakarta"
-            name="location"
-            borderRight={"1px"}
-          />
-          <InputField
-            text="PropertyType"
-            placeholder="Duplex"
-            name="property-type"
-            borderRight={{ md: "1px" }}
-          />
-          <InputField
-            text="Budget"
-            placeholder="$12,000"
-            name="budget"
-            mt={{ base: 4, md: 0 }}
-          />
-          <HStack
-            justifyContent={{ base: "center", lg: "end" }}
-            width={"100%"}
-            alignItems={"center"}
-            mt={{ base: 4, lg: 0 }}
-          >
-            <Button
-              colorScheme="blue"
-              fontWeight={400}
-              rounded={"xl"}
-              px={8}
-              py={6}
-            >
-              Search Property
-            </Button>
-          </HStack>
-        </Card>
+      <HStack justify={"center"} height={"20vh"}>
+        <Form />
       </HStack>
     </Stack>
   );
