@@ -1,9 +1,11 @@
 import {
+  Button,
   Card,
   CardBody,
   CardFooter,
   CardHeader,
   Divider,
+  Flex,
   Image,
   List,
   ListIcon,
@@ -11,17 +13,18 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/react";
-import { AiOutlineCar } from "react-icons/ai";
-import { BiBath, BiBed } from "react-icons/bi";
 import { MdOutlineLocationOn } from "react-icons/md";
 import {
+  borderPremiumColor,
+  buttonSecondaryTextColor,
   cardBackgroundColor,
   cardTextColor,
   primaryTextColor,
 } from "../../../component/styles";
+import { PropertyType } from "../../../util/data";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const ProductCard = ({ data }: { data: string }) => {
+const ProductCard = ({ data }: { data: PropertyType }) => {
   return (
     <Card
       w={"100%"}
@@ -31,6 +34,9 @@ const ProductCard = ({ data }: { data: string }) => {
       bg={cardBackgroundColor()}
       color={cardTextColor()}
       boxShadow={"md"}
+      display={"flex"}
+      flexDirection={"column"}
+      h={"100%"}
     >
       <CardHeader>
         <Stack
@@ -40,7 +46,7 @@ const ProductCard = ({ data }: { data: string }) => {
           objectFit={"contain"}
         >
           <Image
-            src={data}
+            src={data.image_url}
             alt="img"
             objectFit={"cover"}
             rounded={"3xl"}
@@ -50,34 +56,36 @@ const ProductCard = ({ data }: { data: string }) => {
         </Stack>
       </CardHeader>
       <CardBody>
-        <Text color={primaryTextColor()} fontSize={"xl"} fontWeight={500}>
-          $550,000
-        </Text>
-        <Text>The Bismillah Apartment</Text>
+        <Flex align={"flex-end"} justify={"space-between"}>
+          <Stack>
+            <Text color={primaryTextColor()} fontSize={"xl"} fontWeight={500}>
+              $550,000
+            </Text>
+            <Text>{data.property_name}</Text>
+          </Stack>
+          {data.is_premium && (
+            <Button
+              variant={"outline"}
+              rounded={"3xl"}
+              fontSize={"xs"}
+              mr={4}
+              borderColor={borderPremiumColor()}
+              color={buttonSecondaryTextColor()}
+            >
+              PREMIUM
+            </Button>
+          )}
+        </Flex>
       </CardBody>
       <Divider borderColor={"gray.300"} />
-      <CardFooter>
+      <CardFooter flexGrow={1}>
         <List w={"100%"}>
           <ListItem>
             <ListIcon as={MdOutlineLocationOn} />
-            Jakarta, Indonesia
+            {data.alamat}
           </ListItem>
           <ListItem mt={2}>
-            <List
-              fontSize={"sm"}
-              display={"flex"}
-              justifyContent={"space-between"}
-            >
-              <ListItem>
-                <ListIcon as={BiBed} />4 Bed
-              </ListItem>
-              <ListItem>
-                <ListIcon as={BiBath} />2 Bath
-              </ListItem>
-              <ListItem>
-                <ListIcon as={AiOutlineCar} />1 Parking
-              </ListItem>
-            </List>
+            <Text>{data.description}</Text>
           </ListItem>
         </List>
       </CardFooter>

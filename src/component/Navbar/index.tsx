@@ -54,8 +54,8 @@ const Navbar = () => {
             display={{ base: "none", lg: "flex" }}
             gap={{ base: 8, lg: 12 }}
           >
-            {dataNavLink.map((item) => (
-              <ListItem>
+            {dataNavLink.map((item, index) => (
+              <ListItem key={index}>
                 <Link to={item.path}>{item.title}</Link>
               </ListItem>
             ))}

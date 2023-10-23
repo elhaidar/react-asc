@@ -1,3 +1,5 @@
+export const SECRET_CODE = "testProbation"
+
 type dataNavLinkType = {
     title: string;
     path: string;
@@ -32,4 +34,13 @@ export const dataAuthLink: dataNavLinkType[] = [
         path: "/register"
     },
 ]
+
+export type PropertyType = {
+    id: number;
+    property_name: string;
+    alamat: string;
+    is_premium: boolean;
+    image_url: string;
+    description: string;
+} 
 
