@@ -5,7 +5,7 @@ import Form from "./fragment/Form";
 
 const Hero = () => {
   return (
-    <Stack width={"100%"} position={"relative"}>
+    <Stack width={"100%"} position={"relative"} as={"main"}>
       <Stack
         height={"80vh"}
         maxHeight={"700px"}
@@ -43,7 +43,12 @@ const Hero = () => {
             opacity={"80%"}
           />
         </Stack>
-        <Stack textAlign={"center"} position={"relative"} alignItems={"center"}>
+        <Stack
+          textAlign={"center"}
+          position={"relative"}
+          alignItems={"center"}
+          color={"black"}
+        >
           <Heading
             fontSize={{ base: 32, lg: 46 }}
             fontWeight={500}

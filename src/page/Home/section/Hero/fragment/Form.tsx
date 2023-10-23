@@ -1,5 +1,6 @@
 import { Button, Flex, HStack } from "@chakra-ui/react";
 import InputField from "./InputField";
+import { cardBackgroundColor } from "../../../../../component/styles";
 
 const Form = () => {
   return (
@@ -16,6 +17,7 @@ const Form = () => {
       rounded={"3xl"}
       p={8}
       flexWrap={{ base: "wrap", lg: "nowrap" }}
+      bgColor={cardBackgroundColor()}
     >
       <InputField
         text="Location"

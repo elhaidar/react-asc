@@ -1,13 +1,13 @@
-import { List, Slide, Stack } from "@chakra-ui/react";
+import { List, ListItem, Slide, Stack } from "@chakra-ui/react";
 import { forwardRef } from "react";
-import NavItem from "./sections/NavItem";
+import { dataAuthLink, dataNavLink } from "../../util/data";
+import { Link } from "react-router-dom";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const Sidebar = forwardRef<HTMLInputElement, any>(function Sidebar(
   { isOpen }: { isOpen: boolean },
   ref
 ) {
-  const item = ["Home", "Rent", "Sell", "About", "Create Account", "Login"];
   return (
     <Slide direction="right" in={isOpen} style={{ zIndex: 10 }}>
       <Stack
@@ -26,8 +26,15 @@ const Sidebar = forwardRef<HTMLInputElement, any>(function Sidebar(
           display={"flex"}
           flexDirection={"column"}
         >
-          {item.map((data, index) => (
-            <NavItem key={index} text={data} />
+          {dataNavLink.map((item, index) => (
+            <ListItem key={index} color={"secondary"} mb={6}>
+              <Link to={item.path}>{item.title}</Link>
+            </ListItem>
+          ))}
+          {dataAuthLink.map((item, index) => (
+            <ListItem key={index} color={"secondary"} mb={6}>
+              <Link to={item.path}>{item.title}</Link>
+            </ListItem>
           ))}
         </List>
       </Stack>

@@ -1,23 +1,27 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   Box,
-  Button,
   HStack,
   IconButton,
   Image,
   List,
   ListItem,
+  Switch,
 } from "@chakra-ui/react";
 import logo from "../../assets/react.svg";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import Sidebar from "../Sidebar";
 import { CgMenuRightAlt } from "react-icons/cg";
-import { TiWeatherPartlySunny } from "react-icons/ti";
 import { Link } from "react-router-dom";
 import { dataNavLink } from "../../util/data";
+import NavbarRightButton from "./section/NavbarRightButton";
+import { MoonIcon, SunIcon } from "@chakra-ui/icons";
+import { ThemeContext } from "../../App";
+import { iconHoverBackgroundColor, textColor } from "../styles";
 
 const Navbar = () => {
+  const theme: any = useContext(ThemeContext);
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const sidebarRef = useRef<any>(null);
 
   useEffect(() => {
@@ -39,66 +43,45 @@ const Navbar = () => {
   return (
     <Box as="nav" width={"100%"} mx={"auto"} py={4}>
       <List
-        mx={{ base: 8, lg: 32 }}
+        mx={{ base: 0, md: "10%" }}
         display={"flex"}
         justifyContent={"space-between"}
         alignItems={"center"}
-        position={"relative"}
       >
-        <ListItem display={"flex"} alignItems={"center"} gap={16}>
-          <Box display={"flex"} alignItems={"center"}>
-            <Image src={logo} alt="logo" width={"48px"} height={"48px"} />
-          </Box>
+        <ListItem gap={16} display={"flex"} alignItems={"center"}>
+          <Image src={logo} alt="logo" width={"32px"} height={"32px"} />
+          <List
+            display={{ base: "none", lg: "flex" }}
+            gap={{ base: 8, lg: 12 }}
+          >
+            {dataNavLink.map((item) => (
+              <ListItem>
+                <Link to={item.path}>{item.title}</Link>
+              </ListItem>
+            ))}
+          </List>
         </ListItem>
-        <List display={{ base: "none", lg: "flex" }} gap={16}>
-          {dataNavLink.map((item) => (
-            <Link to={item.path}>
-              <ListItem>{item.title}</ListItem>
-            </Link>
-          ))}
-        </List>
         <ListItem display={"flex"} alignItems={"center"} gap={4}>
+          <NavbarRightButton />
+          <HStack pl={4}>
+            <SunIcon />
+            <Switch
+              size="lg"
+              isChecked={theme.currentTheme}
+              onChange={theme.switchTheme}
+            />
+            <MoonIcon />
+          </HStack>
           <IconButton
             aria-label="hamburger-button"
-            icon={<TiWeatherPartlySunny size={28} />}
+            icon={<CgMenuRightAlt size={28} />}
             bg={"transparent"}
+            _hover={{ background: iconHoverBackgroundColor() }}
+            display={{ base: "flex", lg: "none" }}
             size={"lg"}
+            color={textColor()}
+            onClick={() => setIsOpen(!isOpen)}
           />
-          <HStack
-            alignItems={"center"}
-            gap={6}
-            display={{ base: "none", lg: "flex" }}
-          >
-            <Button
-              bg={"transparent"}
-              _hover={{
-                background: "transparent",
-                textDecoration: "underline",
-                textUnderlineOffset: "6px",
-              }}
-              fontWeight={500}
-            >
-              Log in
-            </Button>
-            <Button
-              bg={"black"}
-              colorScheme="secondary"
-              fontWeight={400}
-              rounded={"2xl"}
-              px={6}
-            >
-              Create account
-            </Button>
-          </HStack>
-          <HStack display={{ lg: "none" }} alignItems={"center"}>
-            <IconButton
-              aria-label="hamburger-button"
-              icon={<CgMenuRightAlt size={28} />}
-              bg={"transparent"}
-              size={"lg"}
-              onClick={() => setIsOpen(!isOpen)}
-            />
-          </HStack>
         </ListItem>
       </List>
       <Sidebar isOpen={isOpen} ref={sidebarRef} />

@@ -14,6 +14,11 @@ import {
 import { AiOutlineCar } from "react-icons/ai";
 import { BiBath, BiBed } from "react-icons/bi";
 import { MdOutlineLocationOn } from "react-icons/md";
+import {
+  cardBackgroundColor,
+  cardTextColor,
+  primaryTextColor,
+} from "../../../component/styles";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const ProductCard = ({ data }: { data: string }) => {
@@ -23,7 +28,8 @@ const ProductCard = ({ data }: { data: string }) => {
       maxWidth={"400px"}
       m={2}
       rounded={"3xl"}
-      bg={"white"}
+      bg={cardBackgroundColor()}
+      color={cardTextColor()}
       boxShadow={"md"}
     >
       <CardHeader>
@@ -44,7 +50,7 @@ const ProductCard = ({ data }: { data: string }) => {
         </Stack>
       </CardHeader>
       <CardBody>
-        <Text color={"primary.main"} fontSize={"xl"} fontWeight={500}>
+        <Text color={primaryTextColor()} fontSize={"xl"} fontWeight={500}>
           $550,000
         </Text>
         <Text>The Bismillah Apartment</Text>

@@ -1,5 +1,4 @@
 import { extendTheme } from '@chakra-ui/react'
-import { mode } from "@chakra-ui/theme-tools"
 
 const theme = extendTheme({
   fonts: {
@@ -11,15 +10,8 @@ const theme = extendTheme({
       main: "#4B73FF",
       darker: "#3c5bcc",
     },
-    secondary: "#F7F9FB"
-  },
-  styles: {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    global: (props: any) => ({
-      body: {
-        bg: mode("#F7F9FB", "black")(props),
-      }
-    })
+    secondary: "#F7F9FB",
+    black: "#0C0C1D"
   },
 })
 

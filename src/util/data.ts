@@ -22,3 +22,14 @@ export const dataNavLink: dataNavLinkType[] = [
     },
 ];
 
+export const dataAuthLink: dataNavLinkType[] = [
+    {
+        title: "Log In",
+        path: "/login"
+    },
+    {
+        title: "Create Account",
+        path: "/register"
+    },
+]
+

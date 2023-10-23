@@ -16,6 +16,7 @@ const ProductPage = () => {
 
   return (
     <SimpleGrid
+      as={"main"}
       p={"10px"}
       minChildWidth={{ base: "100%", md: "40%", lg: "30%" }}
       spacing={8}

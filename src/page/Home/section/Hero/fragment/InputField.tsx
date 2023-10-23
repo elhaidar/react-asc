@@ -6,6 +6,7 @@ import {
   InputLeftElement,
 } from "@chakra-ui/react";
 import { useState } from "react";
+import { cardTextColor } from "../../../../../component/styles";
 
 interface PropType {
   text: string;
@@ -41,6 +42,7 @@ const InputField = ({
         {type == "number" && <InputLeftElement>$</InputLeftElement>}
         <Input
           placeholder={placeholder}
+          _placeholder={{ color: cardTextColor() }}
           border={"none"}
           name={name}
           type={type}
