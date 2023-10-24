@@ -15,10 +15,10 @@ import {
   buttonBackgroundColor,
   buttonHoverBackgroundColor,
   buttonTextColor,
-} from "../../../../component/styles";
+} from "../../../../../component/styles";
 import { useForm } from "react-hook-form";
-import encrypt from "../../../../util/encrypt";
-import { postData, propertiesApiUrl } from "../../../../services/api";
+import encrypt from "../../../../../util/encrypt";
+import { postData, propertiesApiUrl } from "../../../../../services/api";
 import { useNavigate } from "react-router-dom";
 
 const CreatePage = () => {

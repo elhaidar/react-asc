@@ -1,6 +1,6 @@
 import { Button, Flex, HStack } from "@chakra-ui/react";
 import InputField from "./InputField";
-import { cardBackgroundColor } from "../../../../../component/styles";
+import { cardBackgroundColor } from "../../../../../../../component/styles";
 
 const Form = () => {
   return (

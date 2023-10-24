@@ -1,17 +1,19 @@
-import { Box, Container } from "@chakra-ui/react";
-import { Outlet } from "react-router-dom";
-import Navbar from "../component/Navbar";
+import { Container } from "@chakra-ui/react";
 import { backgroundColor, textColor } from "../component/styles";
+import { Outlet } from "react-router-dom";
 
-const Layout = () => {
+const RootLayout = () => {
   return (
-    <Container maxWidth={"8xl"} bg={backgroundColor()} color={textColor()}>
-      <Box minHeight={"100vh"} mx={{ base: 8, lg: 12 }}>
-        <Navbar />
-        <Outlet />
-      </Box>
+    <Container
+      maxWidth={"8xl"}
+      minH={"100vh"}
+      bg={backgroundColor()}
+      color={textColor()}
+      h={"100%"}
+    >
+      <Outlet />
     </Container>
   );
 };
 
-export default Layout;
+export default RootLayout;

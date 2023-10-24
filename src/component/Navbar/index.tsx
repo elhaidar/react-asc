@@ -18,9 +18,12 @@ import NavbarRightButton from "./section/NavbarRightButton";
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 import { ThemeContext } from "../../App";
 import { iconHoverBackgroundColor, textColor } from "../styles";
+import { useAppSelector } from "../../redux/store";
+import Logout from "./section/Logout";
 
 const Navbar = () => {
   const theme: any = useContext(ThemeContext);
+  const { auth } = useAppSelector((state) => state.auth);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const sidebarRef = useRef<any>(null);
 
@@ -62,7 +65,9 @@ const Navbar = () => {
           </List>
         </ListItem>
         <ListItem display={"flex"} alignItems={"center"} gap={4}>
-          <NavbarRightButton />
+          {!auth.isLoggedIn && <NavbarRightButton />}
+          {auth.isLoggedIn && <Logout />}
+
           <HStack pl={4}>
             <SunIcon />
             <Switch

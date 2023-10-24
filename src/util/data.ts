@@ -15,8 +15,8 @@ export const dataNavLink: dataNavLinkType[] = [
         path: "/product"
     },
     {
-        title: "Rent",
-        path: "/rent"
+        title: "User",
+        path: "/user"
     },
     {
         title: "About",

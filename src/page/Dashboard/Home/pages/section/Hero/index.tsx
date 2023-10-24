@@ -1,6 +1,6 @@
 import { Button, HStack, Heading, Image, Stack, Text } from "@chakra-ui/react";
-import HeroImage from "../../../../assets/Hero.jpg";
-import HeroMobileImage from "../../../../assets/HeroMobile.jpg";
+import HeroImage from "../../../../../../assets/Hero.jpg";
+import HeroMobileImage from "../../../../../../assets/HeroMobile.jpg";
 import Form from "./fragment/Form";
 
 const Hero = () => {

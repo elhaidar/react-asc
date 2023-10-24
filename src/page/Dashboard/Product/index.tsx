@@ -1,17 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Button, Flex, SimpleGrid, Stack } from "@chakra-ui/react";
+import { SimpleGrid, Stack } from "@chakra-ui/react";
 import ProductCard from "./section/ProductCard";
 import { useEffect, useState } from "react";
-import { fetchData, propertiesApiUrl } from "../../services/api";
-import { PropertyType } from "../../util/data";
-import Loading from "../../component/Loading";
-import { PlusSquareIcon } from "@chakra-ui/icons";
-import {
-  buttonBackgroundColor,
-  buttonHoverBackgroundColor,
-  buttonTextColor,
-} from "../../component/styles";
-import { Link } from "react-router-dom";
+import ActionButton from "./section/ActionButton";
+import { fetchData, propertiesApiUrl } from "../../../services/api";
+import { PropertyType } from "../../../util/data";
+import Loading from "../../../component/Loading";
 
 const ProductPage = () => {
   const [properties, setProperties] = useState<PropertyType[]>([]);
@@ -22,27 +16,11 @@ const ProductPage = () => {
     });
   }, []);
 
-  useEffect(() => {
-    console.log(properties);
-  }, [properties]);
-
   return (
     <Stack as={"main"} p={"10px"}>
       {properties.length > 0 ? (
         <>
-          <Flex py={8} alignItems={"center"} justify={"space-between"}>
-            <Link to={"/product/create"}>
-              <Button
-                leftIcon={<PlusSquareIcon />}
-                bg={buttonBackgroundColor()}
-                color={buttonTextColor()}
-                _hover={{ background: buttonHoverBackgroundColor() }}
-                fontWeight={400}
-              >
-                Add Data
-              </Button>
-            </Link>
-          </Flex>
+          <ActionButton />
           <SimpleGrid
             minChildWidth={{ base: "100%", md: "40%", lg: "30%" }}
             spacing={8}

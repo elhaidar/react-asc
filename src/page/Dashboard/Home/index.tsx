@@ -1,4 +1,4 @@
-import Hero from "./section/Hero";
+import Hero from "./pages/section/Hero";
 
 const HomePage = () => {
   return (

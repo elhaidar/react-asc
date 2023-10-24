@@ -45,6 +45,35 @@ export const currentTheme = () => {
       return "#30303f";
     }
   };
+  export const buttonPrimaryBackgroundColor = () => {
+    if (currentTheme()) {
+      return "blue.300";
+    } else {
+      return primaryColor();
+    }
+  };
+  export const buttonPrimaryHoverBackgroundColor = () => {
+    if (currentTheme()) {
+      return "blue.200";
+    } else {
+      return "blue.500";
+    }
+  };
+  export const buttonSecondaryBackgroundColor = () => {
+    if (currentTheme()) {
+      return "yellow.200";
+    } else {
+      return "yellow.300";
+    }
+  };
+  export const buttonSecondaryHoverBackgroundColor = () => {
+    if (currentTheme()) {
+      return "yellow.100";
+    } else {
+      return "yellow.200";
+    }
+  };
+
   export const buttonSecondaryTextColor = () => {
     if (currentTheme()) {
       return "yellow.300";
@@ -94,3 +123,32 @@ export const currentTheme = () => {
       return "#0C0C1D";
     }
   };
+
+  export const secondaryTextColor = () => {
+    // return "#FF9228";
+    return "#A0AEC0";
+  };
+  export const customBorder = () => {
+    if (currentTheme()) {
+      return "1px solid #253536";
+    } else {
+      return "1px solid #E9EDF7";
+    }
+  };
+  export const borderWhite = () => {
+    return "1px solid #E9EDF7";
+  };
+  export const inputColor = () => {
+    if (currentTheme()) {
+      return "#FFFFFF";
+    } else {
+      return "#2D3748";
+    }
+  };
+  export const inputBackgroundColor = () => {
+    if (currentTheme()) {
+      return "#1B2627";
+    } else {
+      return "#F8F9FA";
+    }
+  };  

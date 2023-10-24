@@ -1,5 +1,7 @@
+import { Provider } from "react-redux";
 import AppRouter from "./router/AppRouter";
 import { createContext, useEffect, useState } from "react";
+import { store } from "./redux/store";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const ThemeContext: any = createContext(null);
@@ -20,14 +22,16 @@ function App() {
     }
   }, []);
   return (
-    <ThemeContext.Provider
-      value={{
-        currentTheme,
-        switchTheme,
-      }}
-    >
-      <AppRouter />
-    </ThemeContext.Provider>
+    <Provider store={store}>
+      <ThemeContext.Provider
+        value={{
+          currentTheme,
+          switchTheme,
+        }}
+      >
+        <AppRouter />
+      </ThemeContext.Provider>
+    </Provider>
   );
 }
 

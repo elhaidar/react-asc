@@ -5,25 +5,35 @@ import {
   createBrowserRouter,
   createRoutesFromChildren,
 } from "react-router-dom";
-import HomePage from "../page/Home";
-import ProductPage from "../page/Product";
-import Layout from "../page/Layout";
-import RentPage from "../page/Rent";
-import AboutPage from "../page/About";
-import CreatePage from "../page/Product/pages/create";
+import Layout from "../page/Dashboard/Layout";
+import HomePage from "../page/Dashboard/Home";
+import ProductPage from "../page/Dashboard/Product";
+import CreatePage from "../page/Dashboard/Product/pages/create";
+import EditPage from "../page/Dashboard/Product/pages/edit";
+import UserPage from "../page/Dashboard/User";
+import AboutPage from "../page/Dashboard/About";
+import CheckAuth from "../middleware/authMiddleware";
+import RootLayout from "../page/Layout";
+import LoginPage from "../page/Login";
 
 const AppRouter = () => {
   const router = createBrowserRouter(
     createRoutesFromChildren(
       <>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<HomePage />} />
-          <Route path="product">
-            <Route index element={<ProductPage />} />
-            <Route path="create" element={<CreatePage />} />
+        <Route path="/" element={<RootLayout />}>
+          <Route path="/" element={<CheckAuth />}>
+            <Route path="/" element={<Layout />}>
+              <Route index element={<HomePage />} />
+              <Route path="product">
+                <Route index element={<ProductPage />} />
+                <Route path="create" element={<CreatePage />} />
+                <Route path="edit/:id" element={<EditPage />} />
+              </Route>
+              <Route path="User" element={<UserPage />} />
+              <Route path="about" element={<AboutPage />} />
+            </Route>
           </Route>
-          <Route path="rent" element={<RentPage />} />
-          <Route path="about" element={<AboutPage />} />
+          <Route path="/login" element={<LoginPage />} />
         </Route>
       </>
     )
